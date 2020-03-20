@@ -1,0 +1,20 @@
+﻿var Landmark = [
+	{ id: "1", "province": "广东省", "city": "深圳市", "district": "罗湖区", "name": "地王大厦", "lan": 114.110704, lat: 22.542747, address: "广东省深圳市罗湖区信兴广场"},
+	{ id: "2", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "赛格广场", "lan": 114.087389, lat: 22.541247, address: "广东省深圳市福田区赛格广场" },
+	{ id: "3", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "深圳市民中心", "lan": 114.059616, lat: 22.543672, address: "广东省深圳市福田区深圳市民中心" },
+	{ id: "4", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "莲花山邓小平像", "lan": 114.056413, lat: 22.551833, address: "广东省深圳市福田区莲花山" },
+	{ id: "5", "province": "广东省", "city": "深圳市", "district": "罗湖区", "name": "国贸大厦", "lan": 114.120165, lat: 22.541979, address: "广东省深圳市罗湖区国贸大厦" },
+	{ id: "6", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "电子大厦", "lan": 114.088278, lat: 22.540864, address: "广东省深圳市福田区中联电子大厦" },
+	{ id: "7", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "上海宾馆", "lan": 114.082085, lat: 22.541116, address: "广东省深圳市福田区上海宾" },
+	{ id: "8", "province": "广东省", "city": "深圳市", "district": "罗湖区", "name": "罗湖口岸联检大楼", "lan": 114.118356, lat: 22.528634, address: "广东省深圳市罗湖区口岸联检楼" },
+	{ id: "9", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "深圳博物馆", "lan": 114.101273, lat: 22.542623, address: "广东省深圳市福田区深圳博物馆" },
+	{ id: "10", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "世界之窗世界广场", "lan": 113.974633, lat: 22.534876, address: "广东省深圳市南山区世界之窗" },
+	{ id: "11", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "欢乐谷", "lan": 113.978730, lat: 22.538869, address: "广东省深圳市南山区欢乐谷" },
+	{ id: "12", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "锦绣中华", "lan": 113.988217, lat: 22.531084, address: "广东省深圳市南山区锦绣中华" },
+	{ id: "13", "province": "广东省", "city": "深圳市", "district": "福田区", "name": "平安国际金融中心", "lan": 114.055470, lat: 22.532810, address: "广东省深圳市福田区平安国际金融中心" },
+	{ id: "14", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "深圳湾大桥", "lan": 113.954616, lat: 22.480260, address: "广东省深圳市南山区深圳湾" },
+	{ id: "15", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "春茧体育馆", "lan": 113.949666, lat: 22.517593, address: "广东省深圳市南山区春茧体育馆" },
+	{ id: "16", "province": "广东省", "city": "深圳市", "district": "龙岗区", "name": "深圳大运中心", "lan": 114.216974, lat: 22.695825, address: "广东省深圳市龙岗区大运中心" },
+	{ id: "17", "province": "广东省", "city": "深圳市", "district": "南山区", "name": "中国华润大厦", "lan": 113.946396, lat: 22.514677, address: "广东省深圳市南山区华润置地大厦" },
+
+]

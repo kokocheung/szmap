@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=27363e7a40bf89803ed8f2bbc36b0238"></script>
+    <script type="text/javascript" src="js/myjs.js"></script>
+    <title></title>
+    <style>
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .content-window-card {
+            position: relative;
+            box-shadow: none;
+            bottom: 0;
+            left: 0;
+            width: auto;
+            padding: 0;
+        }
+
+            .content-window-card p {
+                height: 2rem;
+            }
+
+        .custom-info {
+            border: solid 1px silver;
+        }
+
+        div.info-top {
+            position: relative;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-bottom: 1px solid #CCC;
+            border-radius: 5px 5px 0 0;
+        }
+
+            div.info-top div {
+                display: inline-block;
+                color: #333333;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 31px;
+                padding: 0 10px;
+            }
+
+            div.info-top img {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                transition-duration: 0.25s;
+            }
+
+                div.info-top img:hover {
+                    box-shadow: 0px 0px 5px #000;
+                }
+
+        div.info-middle {
+            font-size: 12px;
+            padding: 10px 6px;
+            line-height: 20px;
+            height:120px;
+            width:200px;
+        }
+
+        div.info-bottom {
+            height: 0px;
+            width: 100%;
+            clear: both;
+            text-align: center;
+        }
+
+            div.info-bottom img {
+                position: relative;
+                z-index: 104;
+            }
+
+        span {
+            margin-left: 5px;
+            font-size: 11px;
+        }
+
+        .info-middle img {
+            float: left;
+            margin-right: 6px;
+            height:120px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+        var map = new AMap.Map('container', {
+            zoom: 11,//级别
+            center: [114.178356, 22.637177],//中心点坐标
+            viewMode: '3D',//使用3D视图);
+            mapStyle: 'amap://styles/e830c8fb04707834851d900f44c21ddf', //设置地图的显示样式
+        });
+
+
+        for (var i = 0; i < Landmark.length; i++) {
+            //alert(Landmark[i].name)
+            id = Landmark[i].id;
+            district = Landmark[i].district;
+            name = Landmark[i].name;
+            lan = Landmark[i].lan;
+            lat = Landmark[i].lat;
+            addr = Landmark[i].address;
+
+            var position = new AMap.LngLat(lan, lat)
+
+            addMarker(map, position, id, name, district, addr)
+        }
+
+
+            
+        //添加marker标记
+        function addMarker(map, position,id, name, district, addr) {
+            var marker = new AMap.Marker({
+                map: map, //地图对象
+                position: position, // 经纬度对象，也可以是经纬度构成的一维数组    
+            });
+            marker.setLabel({
+               // offset: new AMap.Pixel(20, 20),  //设置文本标注偏移量
+                content: id, //设置文本标注内容
+                direction: 'top' //设置文本标注方位
+            })
+            //鼠标点击marker弹出自定义的信息窗体
+            AMap.event.addListener(marker, 'click', function () {
+                //信息窗体内容
+                content = [];
+                content.push("<img src='img/" + name + ".jpg'><strong>区</strong>：" + district + "");
+                content.push("<strong>地址</strong>：" + addr + "");
+
+                //实例化信息窗体
+                var infoWindow = new AMap.InfoWindow({
+                    isCustom: true,  //使用自定义窗体
+                    content: createInfoWindow(name, content.join("<br/>")),
+                    offset: new AMap.Pixel(16, -45)
+
+                });
+                infoWindow.open(map, marker.getPosition());
+            });
+        }
+
+        //构建自定义信息窗体
+        function createInfoWindow(title, content) {
+            var info = document.createElement("div");
+            info.className = "custom-info input-card content-window-card";
+
+            //可以通过下面的方式修改自定义窗体的宽高
+            //info.style.width = "400px";
+            // 定义顶部标题
+            var top = document.createElement("div");
+            var titleD = document.createElement("div");
+            var closeX = document.createElement("img");
+            top.className = "info-top";
+            titleD.innerHTML = title;
+            closeX.src = "https://webapi.amap.com/images/close2.gif";
+            closeX.onclick = closeInfoWindow;
+
+            top.appendChild(titleD);
+            top.appendChild(closeX);
+            info.appendChild(top);
+
+            // 定义中部内容
+            var middle = document.createElement("div");
+            middle.className = "info-middle";
+            middle.style.backgroundColor = 'white';
+            middle.innerHTML = content;
+            info.appendChild(middle);
+
+            // 定义底部内容
+            var bottom = document.createElement("div");
+            bottom.className = "info-bottom";
+            bottom.style.position = 'relative';
+            bottom.style.top = '0px';
+            bottom.style.margin = '0 auto';
+            var sharp = document.createElement("img");
+            sharp.src = "https://webapi.amap.com/images/sharp.png";
+            bottom.appendChild(sharp);
+            info.appendChild(bottom);
+            return info;
+        }
+
+        //关闭信息窗体
+        function closeInfoWindow() {
+            map.clearInfoWindow();
+        }
+
+    </script>
+</body>
+</html>
